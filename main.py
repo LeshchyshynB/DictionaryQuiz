@@ -22,7 +22,7 @@ class App(customtkinter.CTk, Create):
 			
 		self.score = 0
 		self.incorrect = 0
-		self.count = 0
+		self.count = len(list(self.data.items()))
 
 		self.update(self.FRAME)
 
@@ -63,7 +63,7 @@ class App(customtkinter.CTk, Create):
 			self.score += 1
 			self.FRAME["score"].configure(
 				text=f"{self.score} / {self.incorrect} ({self.count}) Rate: {round((self.score*100)/(self.score+self.incorrect), 1)}%")
-			self.count += 1
+			self.count -= 1
 			self.data.pop(self.word_quiz)
 			self.update(self.FRAME)
 		else:
